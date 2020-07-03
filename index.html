@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Matrix</title>
+<style>* {margin: 0; padding: 0;}</style>
+</head>
+<body style="background-color:#000;">
+<canvas id="mc" style="display:block;"></canvas>
+ 
+<script type="text/javascript">
+    var ctx=mc.getContext('2d')  
+    var width  =mc.width= window.innerWidth;  
+    var height  =mc.height= window.innerHeight;  
+    var letters = Array(width).join(1).split('');  
+      
+    var draw = function () {  
+        ctx.fillStyle='rgba(0,0,0,.05)';  
+        ctx.fillRect(0,0,width,height);  
+        ctx.fillStyle='#0F0';  
+        letters.map(function(y_pos, index){  
+        text = String.fromCharCode(48+Math.random()*42);  
+        x_pos = index * 10;  
+        ctx.fillText(text, x_pos, y_pos);  
+        letters[index] = (y_pos > 758 + Math.random() * 1e4) ? 0 : parseInt(y_pos) + 10;  
+      });  
+    };  
+    setInterval(draw, 33);
+</script>
+</body>
+</html>
